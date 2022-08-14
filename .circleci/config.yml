@@ -233,8 +233,7 @@ jobs:
             echo TYPEORM_HOST=$TYPEORM_HOST >> ~/project/backend/.env
             cat ~/project/backend/.env
             cd .circleci/ansible
-            ansible-playbook -i inventory.txt configure-server.yml
-          no_output_timeout: 40m
+            ansible-playbook -i inventory.txt configure-server.yml         
 
       - persist_to_workspace:
           root: ~/
