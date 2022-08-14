@@ -206,7 +206,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["41:2d:eb:05:b7:a3:39:f8:39:d8:98:15:66:2f:95:57"]
+          fingerprints: ["80:49:be:74:fa:14:67:bd:11:39:02:24:5b:e2:d9:1a"]
 
       - run:
           name: Install dependencies
@@ -319,7 +319,7 @@ jobs:
       - ansible
       - nodejs
       - add_ssh_keys:
-          fingerprints: ["41:2d:eb:05:b7:a3:39:f8:39:d8:98:15:66:2f:95:57"]
+          fingerprints: ["80:49:be:74:fa:14:67:bd:11:39:02:24:5b:e2:d9:1a"]
 
       - attach_workspace:
           at: ~/
@@ -476,9 +476,9 @@ workflows:
           requires: [build-backend]
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
-          # filters:
-          #   branches:
-          #     only: [master]
+          filters:
+              branches:
+                only: [testmode]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       - run-migrations:
@@ -489,7 +489,7 @@ workflows:
           requires: [run-migrations]
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]
-      - cloudfront-update:
-          requires: [smoke-test]
-      - cleanup:
-          requires: [cloudfront-update]
+     # - cloudfront-update:
+      #    requires: [smoke-test]
+     # - cleanup:
+      #    requires: [cloudfront-update]
