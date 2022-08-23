@@ -238,7 +238,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/backend/.env
+            - project/backend/.env            
   
   run-migrations:
     docker:
@@ -295,7 +295,7 @@ jobs:
             echo "API_URL = ${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
             cat frontend/.env
-            
+
       - run:
           name: Deploy front-end object
           command: |
